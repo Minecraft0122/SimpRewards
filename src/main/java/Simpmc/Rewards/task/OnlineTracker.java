@@ -4,6 +4,8 @@ import Simpmc.Rewards.SimpRewardsPlugin;
 import Simpmc.Rewards.data.PlayerData;
 import org.bukkit.entity.Player;
 
+import java.util.concurrent.TimeUnit;
+
 public class OnlineTracker {
 
     private final SimpRewardsPlugin plugin;
@@ -18,27 +20,33 @@ public class OnlineTracker {
                 plugin,
                 task -> {
 
-                    for (Player player : plugin.getServer().getOnlinePlayers()) {
+                    for (Player player :
+                            plugin.getServer().getOnlinePlayers()) {
 
-                        plugin.getServer().getRegionScheduler().execute(
-                                plugin,
-                                player.getLocation(),
-                                () -> {
+                        plugin.getServer()
+                                .getRegionScheduler()
+                                .execute(
+                                        plugin,
+                                        player.getLocation(),
+                                        () -> {
 
-                                    PlayerData data = plugin.getDataManager()
-                                            .getPlayerData(player.getUniqueId());
+                                            PlayerData data =
+                                                    plugin.getDataManager()
+                                                            .getPlayerData(
+                                                                    player.getUniqueId()
+                                                            );
 
-                                    data.addTotalMinutes(1);
-                                    data.addDailyMinutes(1);
-                                    data.addWeeklyMinutes(1);
-                                }
-                        );
+                                            data.addTotalMinutes(1);
+                                            data.addDailyMinutes(1);
+                                            data.addWeeklyMinutes(1);
+                                        }
+                                );
                     }
 
                 },
-                20L * 60,
-                20L * 60,
-                java.util.concurrent.TimeUnit.MILLISECONDS
+                60000,
+                60000,
+                TimeUnit.MILLISECONDS
         );
     }
 }
