@@ -1,9 +1,0 @@
-timezone: "Asia/Shanghai"
-
-settings:
-
-  active-minutes-required: 30
-
-  weekly-reset-day: MONDAY
-
-  streak-reset-cycle: 7
