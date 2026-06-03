@@ -57,4 +57,8 @@ public class DataManager {
 
         cache.keySet().forEach(this::save);
     }
+
+    public Map<UUID, PlayerData> getCache() {
+        return cache;
+    }
 }
