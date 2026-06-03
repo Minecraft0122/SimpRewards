@@ -1,0 +1,11 @@
+title: "&8SimpRewards"
+
+fill-material: BLACK_STAINED_GLASS_PANE
+
+close:
+
+  slot: 31
+
+  material: BARRIER
+
+  name: "&c关闭菜单"
